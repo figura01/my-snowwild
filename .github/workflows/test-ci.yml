@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '20'
       - name: install
-        run: cd backend && npm i
+        run: pwd && cd backend && npm i
       - name: ESLint init and run fix
         run: cd backend && npm init && npm run fix .
       - name: Prettier

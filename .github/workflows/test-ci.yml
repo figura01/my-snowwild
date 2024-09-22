@@ -9,19 +9,43 @@ on:
       [develop,main]
       
 jobs:
-  ESLint:
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: '20'
-      - name: install
-        run: pwd && cd backend && npm i
-      - name: ESLint init and run fix
-        run: cd backend && npm init && npm run fix .
-      - name: Prettier
-        run: cd backend && npx prettier --write .
+          node-version: 18
+
+      - name: Install Node.js dependencies
+        run: |
+          cd backend
+          npm i
+          npm run lint
+          cd ../frontent
+          npm i
+          npm run lint
+
+      - name: Run linters back
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint_dir: ./backend
+          eslint: true
+
+      - name: 🏃🏽 Run linters front
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint_dir: ./frontend
+          eslint: true
+
+      - name: CI
+        run: echo "This job's status is ${{ job.status }}."
+
   test-back:
     needs: ESLint
     runs-on: ubuntu-latest

@@ -1,6 +1,6 @@
 services:
   backend:
-    image: snowwild/backend-sw
+    image: figuradocker/staging-backend-sw
     command: sh -c "npm run build && npm run startjs"
     ports:
       - 4000:4000

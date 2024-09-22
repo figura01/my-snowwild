@@ -1,4 +1,4 @@
-name: Compile and push client image
+name: Compile and push client image test
 
 # Controls when the workflow will run
 on:

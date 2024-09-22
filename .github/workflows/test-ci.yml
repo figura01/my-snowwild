@@ -47,7 +47,7 @@ jobs:
         run: echo "This job's status is ${{ job.status }}."
 
   test-back:
-    needs: ESLint
+    needs: run-linters
     runs-on: ubuntu-latest
     services:
       # Label used to access the service container

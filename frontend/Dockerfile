@@ -14,7 +14,4 @@ COPY tsconfig.json .
 COPY postcss.config.js .
 COPY tailwind.config.js .
 
-COPY tailwind.config.js .
-COPY postcss.config.js .
-
 CMD npm run dev

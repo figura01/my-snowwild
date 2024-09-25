@@ -21,7 +21,7 @@ services:
       db:
         condition: service_healthy
   frontend:
-    image: snowwild/staging-frontend-sw
+    image: snowwild/frontend-sw
     command: sh -c "npm run build && npm run start"
     ports:
       - 3000:3000

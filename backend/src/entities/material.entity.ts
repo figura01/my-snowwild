@@ -1,4 +1,4 @@
-import { Field, Float, ID, InputType, ObjectType } from "type-graphql";
+import { Field, Float, ID, InputType, ObjectType } from 'type-graphql'
 import {
   Column,
   Entity,
@@ -6,9 +6,9 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import Category from "./category.entity";
-import { ReservationMaterial } from "./reservation_material.entity";
+} from 'typeorm'
+import Category from './category.entity'
+import { ReservationMaterial } from './reservation_material.entity'
 
 // =================================================================
 //                           OBJECT TYPE
@@ -17,114 +17,115 @@ import { ReservationMaterial } from "./reservation_material.entity";
 @Entity()
 export default class Material {
   @Field()
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Field()
   @Column({ length: 50 })
-  name: string;
+  name: string
 
   @Field()
   @Column()
-  picture: string;
+  picture: string
+
+  @Field(() => Float, { nullable: false })
+  @Column('decimal', { precision: 5, scale: 2 })
+  price: number
 
   @Field()
   @Column()
-  price: number;
+  description: string
 
-  @Field()
-  @Column()
-  quantity: number;
-
-  @Field()
-  @Column()
-  description: string;
-
-  // @Field()
-  // @Column()
-  // disponibility: boolean;
+  @Field(() => [SizeQuantity])
+  @Column('json')
+  sizes: { size: string; quantity: number }[]
 
   @Field(() => Category)
   @ManyToOne(() => Category, (c) => c.material, {
     cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    nullable: true,
   })
-  category: Category;
+  category: Category
 
   @Field(() => [ReservationMaterial])
   @JoinColumn()
   @OneToMany(() => ReservationMaterial, (r) => r.material)
-  reservationMaterials: ReservationMaterial[];
+  reservationMaterials: ReservationMaterial[]
 }
 
-// Quand on fait un ObjectType à supprimer, ne pas mettre d'id. Il sera supprimé, donc pas de retour.
 @ObjectType()
-export class MaterialDeleted {
-  @Field({ nullable: true })
-  name: string;
+class SizeQuantity {
+  @Field()
+  size: string
 
-  @Field({ nullable: true })
-  description: string;
-
-  @Field(() => Float, { nullable: true })
-  price: number;
-
-  @Field({ nullable: true })
-  picture: string;
-
-  @Field(() => Category)
-  category: Category;
+  @Field()
+  quantity: number
 }
 
-// =================================================================
-//                           INPUT TYPE
-// =================================================================
 @InputType()
 export class PartialCategoryInput {
   @Field(() => ID)
-  id: string;
+  id: string
+
+  @Field()
+  name?: string
 }
 
 @InputType()
 export class CreateMaterialInput {
   @Field({ nullable: false })
-  name: string;
+  name: string
 
   @Field({ nullable: true })
-  description: string;
+  description: string
 
   @Field(() => Float, { nullable: false })
-  price: number;
-
-  @Field({ nullable: false })
-  quantity: number;
+  price: number
 
   @Field()
-  picture: string;
+  picture: string
+
+  @Field(() => [SizeInput], { nullable: false })
+  sizes: SizeInput[]
 
   @Field({ nullable: false })
-  category: PartialCategoryInput;
+  category: PartialCategoryInput
+}
+
+@InputType() // Définissez un InputType pour représenter chaque taille avec sa quantité
+class SizeInput {
+  @Field()
+  size: string // Taille du matériel
+
+  @Field()
+  quantity: number // Quantité disponible pour cette taille
 }
 
 @InputType()
 export class UpdateMaterialInput {
   @Field(() => ID)
-  id: string;
+  id: string
 
   @Field({ nullable: true })
-  name?: string;
+  name?: string
 
   @Field({ nullable: true })
-  description?: string;
+  description?: string
 
   @Field(() => Float, { nullable: true })
-  quantity?: number;
+  quantity?: number
 
   @Field(() => Float, { nullable: true })
-  price?: number;
+  price?: number
 
   @Field({ nullable: true })
-  picture?: string;
+  picture?: string
 
-  @Field({ nullable: true })
-  category?: PartialCategoryInput;
+  @Field()
+  category?: PartialCategoryInput
+
+  @Field(() => [SizeInput], { nullable: false })
+  sizes: { size: string; quantity: number }[]
 }

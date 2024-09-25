@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot du composant login 1`] = `
+<div>
+  <main
+    class="flex min-h-3/4 m-8 flex-col items-center justify-center p-8 font-poppins"
+  >
+    <form
+      class="bg-white p-8 shadow-md rounded-lg w-1/2"
+    >
+      <h1
+        class="font-bold text-center text-2xl mb-10 text-black"
+      >
+        Connexion
+      </h1>
+      <div
+        class="mb-10"
+      >
+        <input
+          class="w-full px-4 py-2 border rounded-lg text-black placeholder-gray-500"
+          name="email"
+          placeholder="Indiquez votre email"
+          type="text"
+        />
+      </div>
+      <div
+        class="mb-10"
+      >
+        <input
+          class="w-full px-4 py-2 border rounded-lg text-black placeholder-gray-500"
+          name="password"
+          placeholder="Indiquez votre mot de passe"
+          type="password"
+        />
+      </div>
+      <input
+        class="w-1/2 bg-black text-white py-2 rounded-lg hover:bg-neutral-100 hover:text-neutral-950 hover:font-bold cursor-pointer"
+        style="display: block; margin: 0px auto;"
+        type="submit"
+        value="Je me connecte"
+      />
+      <div
+        class="mt-8 text-center"
+      >
+        <span
+          class="text-red-500 block"
+        />
+        <span
+          class="text-blue-500 block"
+        >
+          Bienvenue!
+        </span>
+      </div>
+      <div
+        class="mt-8 text-center"
+      >
+        <a
+          class="text-black hover:text-gray-600 block"
+          href="/auth/reset"
+        >
+          Mot de passe oublié?
+        </a>
+        <a
+          class="text-black hover:text-gray-600 block mt-2"
+          href="/auth/register"
+        >
+          Pas encore inscrit ?
+        </a>
+      </div>
+    </form>
+  </main>
+</div>
+`;

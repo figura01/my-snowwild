@@ -55,10 +55,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
-      - name: Goto frontend and install
-        run: cd frontend && npm i
-      - name: run test front
-        run: npm run test
+      - name: Goto frontend && install && run test
+        run: |
+          cd frontend
+          npm i 
+          npm run test
+
   docker:
     needs: test-back
     # if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'

@@ -3,13 +3,26 @@ name: test-ci
 on:
   push: # Lors du push sur toutes les branches
     branches:
-      - "*"
+      - "staging"
   pull_request:
     branches:
-      [develop,main]
+      - "staging"
       
 jobs:
   ESLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      - name: install
+        run: cd frontend && npm i
+      - name: ESLint init and run fix
+        run: cd frontend && npm init && npm run fix .
+      - name: Prettier
+        run: cd backend && npx prettier --write .
+  ESLint-back:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,7 +93,7 @@ jobs:
         with:
           push: true
           context: "{{defaultContext}}:backend"
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dev-backend-sw:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_BACKEND_SW }}-staging:latest
   docker-front:
     needs: test-front
     # if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'
@@ -100,5 +113,5 @@ jobs:
         with:
           push: true
           context: "{{defaultContext}}:frontend"
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dev-frontend-sw:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_FRONTEND_SW }}-staging:latest
     

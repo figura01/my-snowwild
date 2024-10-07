@@ -1,22 +1,14 @@
-import type { Config } from "jest";
+import type { Config } from '@jest/types';
 
-const config: Config = {
-  coverageProvider: "v8",
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  testEnvironment: "jsdom",
-  transform: {
-       "^.+\\.(ts|tsx|js|jsx)?$": "ts-jest",
+const config: Config.InitialOptions = {
+  displayName: 'client',
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  transformIgnorePatterns: ['\\.(css|scss|sass)$'],
+  moduleNameMapper: {
+    '\\.(css|scss|sass)$': 'identity-obj-proxy',
   },
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
-  // moduleNameMapper: {
-  //   "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
-  //   "^@/(.*)$": "<rootDir>/src/$1",
-  // },
-  preset: "ts-jest",
-  "moduleDirectories": [
-    "node_modules",
-    "src",
-    "__test__"
-  ],
-  testPathIgnorePatterns: ["\\node_modules\\"],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };
+
+export default config;

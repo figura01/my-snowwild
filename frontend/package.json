@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch",
+    "test": "jest",
     "test:watch": "jest --watch",
     "fix": "npm run format && npm run lint:fix",
     "lint:fix": "npm run lint -- --fix",

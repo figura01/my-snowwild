@@ -51,7 +51,7 @@ const formSchema = z.object({
   // .or(z.literal("")),
 })
 
-export function FormHook() {
+export default function FormHook() {
   const router = useRouter();
   const [createUser, {data, loading, error}] = useMutation(CREATE_USERS_BY_ADMIN, {
     fetchPolicy: "no-cache"

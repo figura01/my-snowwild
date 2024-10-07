@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Category } from "@/types";
+import { CategoryType } from "@/types";
 
 type IconType = LucideIcon | React.ComponentType<any> | undefined;
 
@@ -9,7 +9,7 @@ type StepItem = {
 	description?: string;
 	icon?: IconType;
 	optional?: boolean;
-	categories?: Category[];
+	categories?: CategoryType[];
 };
 
 interface StepOptions {

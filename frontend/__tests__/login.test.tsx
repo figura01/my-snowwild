@@ -3,6 +3,13 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import { LOGIN } from "@/requetes/queries/auth.queries";
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 import { MockedProvider } from "@apollo/client/testing";
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+
+if (process.env.NODE_ENV !== "production") {
+  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
 
 jest.mock("next/router", () => ({
   ...jest.requireActual("next-router-mock"),
@@ -20,11 +27,19 @@ const mocks = [
     result: {
       data: {
         login: {
-          success: true,
-          message: "Bienvenue!",
+          id: '1',
+          role: 'admin',
+          email: 'test@mondomaine.com',
+          password: 'motdepasse'
         },
       },
     },
+    user: {
+      id: '1',
+      role: 'admin',
+      email: 'test@mondomaine.com',
+      password: 'motdepasse'
+    }
   },
 ];
 

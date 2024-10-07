@@ -9,7 +9,7 @@ on:
       - "staging"
       
 jobs:
-  ESLint:
+  ESLint-front:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
       - name: Prettier
         run: cd backend && npx prettier --write .
   test-back:
-    needs: ESLint
+    needs: ESLint-back
     runs-on: ubuntu-latest
     services:
       # Label used to access the service container
@@ -62,6 +62,7 @@ jobs:
       - name: Goto back and run tests
         run: cd backend && npm i && npm run testCI
   test-front:
+    needs: ESLint-front
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

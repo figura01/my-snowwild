@@ -73,7 +73,7 @@ jobs:
         run: |
           cd frontend
           npm i 
-          npm run test a
+          npm run test
 
   docker-back:
     needs: test-back

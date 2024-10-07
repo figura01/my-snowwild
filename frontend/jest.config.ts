@@ -178,7 +178,17 @@ const config: Config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
+  },
+  globals: {
+    "ts-jest": {
+      transformerConfig: {
+        transformIgnorePatterns: [
+          "<rootDir>/node_modules/(react-clone-referenced-element|@react-native-community|react-navigation|@react-navigation/.*|@unimodules/.*|native-base|react-native-code-push)",
+          "jest-runner",
+        ],
+      },
+    },
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

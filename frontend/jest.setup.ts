@@ -1,3 +1,2 @@
-import '@testing-library/jest-dom'
-
-jest.mock('next/router', () => require('next-router-mock'));
+import "@testing-library/jest-dom";
+export const usePathname = jest.fn();

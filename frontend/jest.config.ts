@@ -1,21 +1,21 @@
-import type { Config } from '@jest/types';
+/**
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
+ */
 
-const config: Config.InitialOptions = {
-  displayName: 'client',
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  transform: {
-    "^.+\\.(js|ts)$": "ts-jest",
-  },
-  transformIgnorePatterns: [
-      "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.js$",
-      "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.ts$",
-      "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.tsx$",
-  ],
-  moduleNameMapper: {
-    '\\.(css|scss|sass)$': 'identity-obj-proxy',
-  },
+import type { Config } from "jest";
+
+const config: Config = {
+  coverageProvider: "v8",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  testEnvironment: "jsdom",
+  transform: {
+    "^.+\\.tsx?$": "ts-jest",
+  },
+  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
 };
 
 export default config;

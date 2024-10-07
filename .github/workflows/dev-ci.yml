@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Goto back and run tests
         run: cd backend && npm i && npm run testCI
-  test-front:
+  test-front
     needs: ESLint-front
     runs-on: ubuntu-latest
     steps:

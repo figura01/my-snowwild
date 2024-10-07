@@ -1,0 +1,15 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "snowwild",
+      "username": "postgres",
+      "password": "postgres",
+      "socketPath": "/Users/laurentvuillaume/Desktop/Wild-Code-School/2309-wns-jaune-snow-wild/backend/src/db.ts",
+      "name": "Test db"
+    }
+  ]
+}

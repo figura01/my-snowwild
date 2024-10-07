@@ -13,5 +13,10 @@ const config: Config = {
   //   "^@/(.*)$": "<rootDir>/src/$1",
   // },
   preset: "ts-jest",
+  "moduleDirectories": [
+    "node_modules",
+    "src",
+    "__test__"
+  ],
   testPathIgnorePatterns: ["\\node_modules\\"],
 };

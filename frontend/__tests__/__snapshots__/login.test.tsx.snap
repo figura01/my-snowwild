@@ -46,10 +46,8 @@ exports[`Snapshot du composant login 1`] = `
           class="text-red-500 block"
         />
         <span
-          class="text-blue-500 block"
-        >
-          Bienvenue!
-        </span>
+          class="text-red-500 block"
+        />
       </div>
       <div
         class="mt-8 text-center"

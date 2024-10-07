@@ -69,7 +69,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
-      - name: Goto frontend && install && run test
+      - name: Go to frontend && install && run test
         run: |
           cd frontend
           npm i 

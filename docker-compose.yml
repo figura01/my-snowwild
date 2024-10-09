@@ -41,7 +41,7 @@ services:
     env_file:
       - ./frontend/.env
   db:
-    image: postgres:15
+    image: postgres:14
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d snowwild -U postgres"]

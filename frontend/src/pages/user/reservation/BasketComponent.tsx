@@ -13,7 +13,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import StepperFormActions from "./ReservationActions";
-import { DateFormInfos } from "./ReservationDateStep";
+import { DateFormInfos } from "@/types/form";
 
 function BasketComponent({ dateFormInfo }: { dateFormInfo: DateFormInfos }) {
   const router = useRouter();

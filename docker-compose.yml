@@ -37,11 +37,11 @@ services:
       - WDS_SOCKET_HOST=127.0.0.1
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
-      - NEXT_PUBLIC_IMAGE_URL=http://localhost:8000
+      - NEXT_PUBLIC_IMAGE_URL=http://localhost:8010
     env_file:
       - ./frontend/.env
   db:
-    image: postgres:15
+    image: postgres:14
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d snowwild -U postgres"]
@@ -69,11 +69,13 @@ services:
       - ./images/src:/app/src
       - ./images/uploads:/app/uploads
     ports:
-      - 8000:8000
+      - 8010:8010
     environment:
       - WDS_SOCKET_HOST=127.0.0.1
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
+    env_file:
+      - ./images/.env
 
 volumes:
   snowwild-data:

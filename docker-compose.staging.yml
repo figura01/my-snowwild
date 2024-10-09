@@ -1,6 +1,7 @@
 services:
   backend:
-    image: figuradocker/staging-backend-sw
+    platform: linux/amd64
+    image: figuradocker/backend-sw-staging
     command: sh -c "npm run build && npm run startjs"
     ports:
       - 4000:4000
@@ -20,8 +21,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    # env_file:
+    #   - ./.env
   frontend:
-    image: snowwild/frontend-sw
+    platform: linux/amd64
+    image: figuradocker/frontend-sw-staging
     command: sh -c "npm run build && npm run start"
     ports:
       - 3000:3000
@@ -29,10 +33,11 @@ services:
       - WDS_SOCKET_HOST=127.0.0.1
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
   db:
-    image: postgres:15
+    platform: linux/amd64
+    image: postgres:14
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d snowwild -U postgres"]
@@ -54,6 +59,21 @@ services:
     restart: always
     ports:
       - 8080:8080
+  images:
+    platform: linux/amd64
+    image: figuradocker/images-sw-staging
+    volumes:
+      - ./images/src:/app/src
+      - ./images/uploads:/app/uploads
+    ports:
+      - 8011:8010
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - PORT=8010
+    # env_file:
+    #   - ./.env
   nginx:
     image: nginx:1.21.3
     depends_on:
@@ -61,6 +81,7 @@ services:
       - frontend
       - db
       - adminer
+      - images
     restart: always
     ports:
       - ${GATEWAY_PORT:-8002}:80
@@ -70,3 +91,4 @@ services:
 # On aura un serveur front et non un dossier à partager
 volumes:
   snowwild-data-staging:
+  images-data-staging:

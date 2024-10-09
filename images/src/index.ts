@@ -3,9 +3,9 @@ import multer from "multer";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
+// import 'dotenv/config';
 
 const app = express();
-const port = 8000;
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
@@ -54,6 +54,6 @@ app.get("/files/:filename", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Service d'image écoute sur : ${port}`);
+app.listen(8000, () => {
+  console.log(`Service d'image écoute sur : ${process.env.PORT}`);
 });

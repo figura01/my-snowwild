@@ -11,5 +11,7 @@
     "strictPropertyInitialization": false,
     "outDir": "./dist",             /* Check for class properties that are declared but not set in the constructor. */
     "useDefineForClassFields": false,
-  }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules",]
 }

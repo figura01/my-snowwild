@@ -1,6 +1,6 @@
 "use client";
 import { CartItem } from "@/contexts/CartContext";
-import { DateFormInfos } from "@/pages/user/reservation/DatePickerComponent";
+// import { DateFormInfos } from "../pages/user/reservation/DatePickerComponent";
 // FormDataCard : FOR LATER MAYBE
 export const EmptyLocalStorage = (...storageKeys: string[]) => {
   storageKeys.forEach((key: string) => {
@@ -10,7 +10,7 @@ export const EmptyLocalStorage = (...storageKeys: string[]) => {
 
 export const SetToLocalStorage = (
   storageKey: string,
-  itemToStore: CartItem[] | DateFormInfos
+  itemToStore: CartItem[]
 ) => {
   if (itemToStore)
     localStorage.setItem(storageKey, JSON.stringify(itemToStore));

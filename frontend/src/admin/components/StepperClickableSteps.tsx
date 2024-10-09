@@ -1,11 +1,12 @@
 "use client";
 
+import { CategoryType } from "@/types";
 import { Step, type StepItem, Stepper, useStepper } from "./stepper";
 import { Button } from "@/components/ui/button";
 
 
 
-export default function StepperClickableSteps({ steps }) {
+export default function StepperClickableSteps({ steps }: {steps: any}) {
 	return (
 		<div className="flex w-full flex-col gap-4">
 			<Stepper
@@ -16,7 +17,7 @@ export default function StepperClickableSteps({ steps }) {
 					setStep(step);
 				}}
 			>
-				{steps?.map((stepProps, index) => {
+				{steps?.map((stepProps: any, index: number) => {
 					console.log(steps)
 					return (
 						<Step key={stepProps.label} {...stepProps}>
@@ -24,7 +25,7 @@ export default function StepperClickableSteps({ steps }) {
 								<h1 className="text-xl">Step {index + 1}</h1>
 								{index === 0 && (
 									<select>
-										{stepProps?.categories?.map((c) => (
+										{stepProps?.categories?.map((c: any) => (
 											<option key={`category_${c.id}`} value={c.id}>{c.name}</option>
 										))}
 										

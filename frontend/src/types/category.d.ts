@@ -3,7 +3,7 @@ export interface Category {
     name: string;
   }
 
-  export interface CategoryQuery {
-    categories: Category[];
-  }
+export interface CategoryQuery {
+  categories: Category[];
+}
   

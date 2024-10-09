@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Label } from "@/components/ui/label";
 import { Input } from '@/components/ui/input';
-import { SkiSizes, SnowboardSizes, BootsSizes, ClothSizes, StickSizes } from '@/pages/admin/constantes';
+import { SkiSizes, SnowboardSizes, BootsSizes, ClothSizes, StickSizes } from '@/constantes';
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CategoryType, SizeType } from "@/types";

@@ -1,6 +1,6 @@
 services:
   backend:
-    image: figuradocker/backend-sw-staging
+    build: ./backend
     command: sh -c "npm run build && npm run startjs"
     ports:
       - 4000:4000

@@ -1,5 +1,6 @@
 services:
   backend:
+    platform: linux/amd64
     build: ./backend
     command: sh -c "npm run resetDb && npm run start"
     ports:
@@ -28,6 +29,7 @@ services:
     env_file:
       - ./backend/.env
   frontend:
+    platform: linux/amd64
     build: ./frontend
     ports:
       - 3000:3000
@@ -41,7 +43,8 @@ services:
     env_file:
       - ./frontend/.env
   db:
-    image: postgres:15
+    platform: linux/amd64
+    image: postgres:14
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d snowwild -U postgres"]
@@ -64,6 +67,7 @@ services:
     ports:
       - 8080:8080
   images:
+    platform: linux/amd64
     build: ./images
     volumes:
       - ./images/src:/app/src

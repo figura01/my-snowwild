@@ -1,6 +1,7 @@
 services:
   backend:
-    build: ./backend
+    platform: linux/amd64
+    image: figuradocker/backend-sw-staging
     command: sh -c "npm run build && npm run startjs"
     ports:
       - 4000:4000
@@ -23,6 +24,7 @@ services:
     # env_file:
     #   - ./.env
   frontend:
+    platform: linux/amd64
     image: figuradocker/frontend-sw-staging
     command: sh -c "npm run build && npm run start"
     ports:
@@ -34,6 +36,7 @@ services:
     # env_file:
     #   - ./.env
   db:
+    platform: linux/amd64
     image: postgres:15
     restart: always
     healthcheck:
@@ -57,6 +60,7 @@ services:
     ports:
       - 8080:8080
   images:
+    platform: linux/amd64
     image: figuradocker/images-sw-staging
     volumes:
       - ./images/src:/app/src

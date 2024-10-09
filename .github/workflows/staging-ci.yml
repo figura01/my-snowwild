@@ -94,6 +94,7 @@ jobs:
         with:
           push: true
           context: "{{defaultContext}}:backend"
+          file: ./backend/Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_BACKEND_SW }}-staging:latest
   docker-front:
     needs: test-front
@@ -113,6 +114,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
+          file: ./client/Dockerfile
           context: "{{defaultContext}}:frontend"
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_FRONTEND_SW }}-staging:latest
   docker-images:
@@ -133,5 +135,6 @@ jobs:
         with:
           push: true
           context: "{{defaultContext}}:images"
+          file: ./images/Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGES_SW }}-staging:latest
     

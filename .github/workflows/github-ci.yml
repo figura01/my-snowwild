@@ -1,4 +1,4 @@
-name: 🚗 CI EcoVoit
+name: 🚗 CI My-Snowwild
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ jobs:
 
       - name: 🎯 Install Node.js dependencies for back
         run: |
-          cd back
+          cd backend
           npm i
 
       - name: 🎯 Install Node.js dependencies for front

@@ -73,7 +73,7 @@ jobs:
           DB_TEST_JEST_PORT: 5432
           DB_TEST_JEST_HOST: db_test
         run: |
-          cd ./back 
+          cd ./backend
           npm i
           npm run test-ci
 

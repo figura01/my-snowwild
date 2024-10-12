@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ts-node-dev --exit-child --watch src --poll src/index.ts",
     "test": "jest",
-    "testCI": "jest",
+    "test-ci": "jest",
     "build": "npx tsc",
     "startjs": "cd /app/dist && node index.js",
     "fix": "npm run format && npm run lint:fix",

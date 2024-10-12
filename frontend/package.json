@@ -12,7 +12,7 @@
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "test": "jest",
+    "test-ci": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {

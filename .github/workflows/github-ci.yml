@@ -32,6 +32,11 @@ jobs:
         run: |
           cd frontend
           npm i
+      
+      - name: 🎯 Install Node.js dependencies for images
+        run: |
+          cd images
+          npm i          
 
       - name: 🏃🏽 Run linters back
         run: |
@@ -41,6 +46,11 @@ jobs:
       - name: 🏃🏽 Run linters front
         run: |
           cd frontend
+          npm run lint
+
+      - name: 🏃🏽 Run linters images
+        run: |
+          cd images
           npm run lint
 
       - name: 🤗 Hello CI
@@ -100,6 +110,11 @@ jobs:
         run: |
           npm i
           npm run build
+      - name: Build images
+        working-directory: images
+        run: |
+          npm i
+          npm run build
 
   docker:
     needs: builds
@@ -126,15 +141,22 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./back
+          context: ./backend
           tags: "${{ secrets.DOCKERHUB_USERNAME }}/backend-sw:latest"
 
       - name: 🔨 Build and push front
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./front
+          context: ./frontend
           tags: "${{ secrets.DOCKERHUB_USERNAME }}/frontend-sw:latest"
+
+      - name: 🔨 Build and push images
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          context: ./images
+          tags: "${{ secrets.DOCKERHUB_USERNAME }}/images-sw:latest"
 
   # webhook:
   #   needs:

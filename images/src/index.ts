@@ -39,7 +39,7 @@ app.post("/upload", upload.single("file"), (req: any, res: Response) => {
 });
 
 app.get("/files/:filename", (req, res) => {
-  let file = path.join(__dirname + "/../uploads", req.params.filename);
+  const file = path.join(__dirname + "/../uploads", req.params.filename);
   console.log("file", file);
   fs.readFile(file, (err, content) => {
     if (err) {

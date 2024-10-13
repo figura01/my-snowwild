@@ -3,9 +3,9 @@ import multer from "multer";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
+// import 'dotenv/config';
 
 const app = express();
-const port = 8000;
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
@@ -39,7 +39,7 @@ app.post("/upload", upload.single("file"), (req: any, res: Response) => {
 });
 
 app.get("/files/:filename", (req, res) => {
-  let file = path.join(__dirname + "/../uploads", req.params.filename);
+  const file = path.join(__dirname + "/../uploads", req.params.filename);
   console.log("file", file);
   fs.readFile(file, (err, content) => {
     if (err) {
@@ -54,6 +54,6 @@ app.get("/files/:filename", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Service d'image écoute sur : ${port}`);
+app.listen(8000, () => {
+  console.log(`Service d'image écoute sur : ${process.env.PORT}`);
 });

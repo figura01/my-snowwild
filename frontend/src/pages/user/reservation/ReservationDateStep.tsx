@@ -28,14 +28,11 @@ const FirstFormSchema = z.object({
       message: "La date doit être valide.",
     }),
 });
-export interface DateFormInfos {
-  start_date: Date;
-  end_date: Date;
-}
+
 function ReservationDateStep() {
   const { nextStep } = useStepper();
   const actualDate = new Date(new Date().getFullYear(),new Date().getMonth(), new Date().getDate());
-  const [formInfos, setFormInfos] = useState<DateFormInfos>({
+  const [formInfos, setFormInfos] = useState<any>({
     start_date: actualDate,
     end_date: new Date(
       actualDate.getFullYear(),

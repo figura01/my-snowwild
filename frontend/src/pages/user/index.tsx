@@ -4,6 +4,7 @@ import Head from "next/head";
 import ListMaterial from "@/components/ListMaterial";
 
 const inter = Inter({ subsets: ["latin"] });
+console.log('test staging')
 
 export default function Home() {
   return (

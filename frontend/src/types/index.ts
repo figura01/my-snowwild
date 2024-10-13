@@ -5,7 +5,10 @@ export type CategoryType = {
   name: string;
 }
 
-export type SizeType = string;
+export type SizeType = {
+  label: string,
+  isActive: boolean
+};
 
 enum MaterialSizes {
   SkiSizes,

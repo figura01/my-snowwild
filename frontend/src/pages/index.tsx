@@ -5,12 +5,13 @@ import styles from "@/styles/Home.module.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import { useContext } from "react";
-
+import { LIST_CATEGORIES } from "@/requetes/queries/category.queries";
+import { useQuery } from "@apollo/client";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  console.log('LISTCATEGORIES', LIST_CATEGORIES)
   const { user } = useContext(AuthContext);
-  console.log("USER HOME", user);
 
   return (
     <>

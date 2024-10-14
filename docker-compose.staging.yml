@@ -61,7 +61,7 @@ services:
       - 8080:8080
   images:
     platform: linux/amd64
-    image: figuradocker/images-sw-staging
+    image: figuradocker/images-sw
     volumes:
       - ./images/src:/app/src
       - ./images/uploads:/app/uploads

@@ -10,8 +10,15 @@ import { useQuery } from "@apollo/client";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  console.log('LISTCATEGORIES', LIST_CATEGORIES)
+  console.log('LISTCATEGORIES home', LIST_CATEGORIES)
   const { user } = useContext(AuthContext);
+
+  const { data, loading, error } = useQuery(LIST_CATEGORIES, {
+    fetchPolicy:"no-cache",
+    onCompleted: (data) => {
+      console.log('data catgory on HomePage', data)
+    },
+  })
 
   return (
     <>

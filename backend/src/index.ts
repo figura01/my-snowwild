@@ -60,7 +60,7 @@ async function main() {
   app.use(
     '/',
     cors<cors.CorsRequest>({
-      origin: ['http://localhost:3000', 'http://localhost:8000'],
+      origin: ['http://localhost:3000', 'http://localhost:8000', 'http://localhost:8002'],
       credentials: true,
     }),
     express.json(),

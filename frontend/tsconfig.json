@@ -21,6 +21,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "outDir": "dist",
     "paths": {
       "@/*": [
         "./src/*"
